@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaNewspaper, FaRegEdit } from "react-icons/fa";
-import logo from "../assets/logoText.png";
+import logo from "../assets/tvLogo.png";
 import AddUser from "../pages/Dashboard/AddUser";
 import AddPost from "../pages/Dashboard/AddPost";
 
@@ -43,7 +43,7 @@ const Dashboard = () => {
           {/* Sidebar content here */}
           <div className="hidden lg:block">
             <div className="flex flex-col items-center space-y-3 ">
-              <img className="w-52 -mt-20 -mb-20" src={logo} alt="" />
+              <img className="w-28" src={logo} alt="" />
             </div>
           </div>
           <div className="text-base font-medium mt-4">

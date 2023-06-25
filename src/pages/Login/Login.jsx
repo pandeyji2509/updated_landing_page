@@ -1,62 +1,114 @@
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import logo from "../../assets/tvLogo.png";
+import illustrator from "../../assets/undraw_login_re_4vu2.svg";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import logo from "../../assets/logoText.png";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const [error, setError] = useState("");
+  const [isShow, setIsShow] = useState(false);
+//   const [error, setError] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
 
-  const handleLogIn = (event) => {
-    event.preventDefault();
+  const onSubmit = (data) => {
+    console.log(data)
+    fetch(`http://localhost:8000/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.log(error)
+        navigate("/")
+      })
+  };
+
+  const toggle = () => {
+    setIsShow(!isShow);
   };
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-100">
-        <div className="hero-content flex-col ">
-          <div className="lg:flex items-center">
-            <h2 className="text-5xl font-bold">Welcome To </h2>
-            <img className="w-52 mx-auto -mb-16 -mt-12" src={logo} alt="" />
+      <div className="bg-base-200 min-h-screen pt-12">
+        <div className="text-center">
+          <div className="flex justify-center items-center gap-3">
+            <h1 className="text-3xl font-bold "> Welcome To</h1>
+            <img className="w-20" src={logo} alt="" />
           </div>
-
-          <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
-            <form onSubmit={handleLogIn} className="card-body">
-              <div className="text-center">
-                <h1 className="text-3xl font-bold text-primary">Login now!</h1>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="input input-bordered"
-                />
-              </div>
-              <div className="form-control">
+          <h1 className="text-5xl font-bold">Login now!</h1>
+        </div>
+        <div className="hero bg-base-200">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="hero-content flex-col lg:flex-row-reverse mt-8"
+          >
+            <div className="text-center lg:text-left md:w-1/2">
+              <img src={illustrator} alt="" />
+            </div>
+            <div className="card flex-shrink-0 max-w-sm shadow-2xl bg-base-100 md:w-1/2">
+              <div className="card-body">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Username</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    className="input input-bordered"
+                    {...register("username", { required: true })}
+                  />
+                  {errors.username && (
+                    <span className="text-red-600">Username is required</span>
+                  )}
+                </div>
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="input input-bordered"
-                />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-                <p className="text-error">
-                  <small>{error}</small>
-                </p>
+                <div className=" flex justify-between items-center gap-4">
+                  <div className="w-full">
+                    <input
+                      type={isShow ? "text" : "password"}
+                      placeholder="Password"
+                      className="input input-bordered w-full"
+                      {...register("password", { required: true })}
+                    />
+                    {errors.password && (
+                      <span className="text-red-600">Password is required</span>
+                    )}
+                    {/* {error && (
+                      <span className="text-red-600">Wrong Password</span>
+                    )} */}
+                  </div>
+                  <div onClick={toggle}>
+                    {!isShow && (
+                      <span className="text-xl">
+                        <FaEyeSlash></FaEyeSlash>
+                      </span>
+                    )}
+                    {isShow && (
+                      <span className="text-xl">
+                        <FaEye></FaEye>
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="form-control mt-6">
+                  <button className="btn btn-primary">Login</button>
+                </div>
               </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

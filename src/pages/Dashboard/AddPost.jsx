@@ -1,22 +1,44 @@
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
 const AddPost = () => {
-    const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(new Date());
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  useEffect(() => {
+    setInterval(() => setTime(new Date()), 1000);
+  }, []);
 
-    useEffect( () => {
-        setInterval(() => setTime(new Date()),1000)
-    },[])
+  const onSubmit = (data) => {
+    console.log(data);
+    fetch(`http://localhost:8000/news_list`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
   return (
     <dialog id="my_modal_2" className="modal">
-      <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-        <button className="btn btn-sm btn-circle btn-ghost text-2xl absolute right-2 top-2">
-          ✕
-        </button>
+      <div method="dialog" className="modal-box w-11/12 max-w-5xl">
+        <form>
+          <button className="btn btn-sm btn-circle btn-ghost text-2xl absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
         <h1 className="text-2xl font-bold text-center mt-2 ">
           Let&apos;s add a new post
         </h1>
-        <form className="w-full">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full">
           <div className="grid grid-cols-2 gap-5 mt-8 mb-3">
             <div>
               <input
@@ -24,7 +46,11 @@ const AddPost = () => {
                 name="title"
                 placeholder="Title"
                 className="input input-bordered w-full"
+                {...register("title", { required: true })}
               />
+              {errors.title && (
+                <span className="text-red-600">Title is required</span>
+              )}
             </div>
             <div>
               <input
@@ -32,7 +58,11 @@ const AddPost = () => {
                 name="author"
                 placeholder="Author"
                 className="input input-bordered w-full"
+                {...register("author", { required: true })}
               />
+              {errors.author && (
+                <span className="text-red-600">Author is required</span>
+              )}
             </div>
             <div>
               <input
@@ -40,15 +70,23 @@ const AddPost = () => {
                 name="tags"
                 placeholder="Tags"
                 className="input input-bordered w-full"
+                {...register("tags", { required: true })}
               />
+              {errors.tags && (
+                <span className="text-red-600">Tags is required</span>
+              )}
             </div>
             <div>
               <input
-                type="file"
+                type="text"
                 name="image"
                 placeholder="Image"
-                className="file-input file-input-bordered file-input-primary w-full"
+                className="input input-bordered w-full"
+                {...register("img", { required: true })}
               />
+              {errors.img && (
+                <span className="text-red-600">Image is required</span>
+              )}
             </div>
             <div>
               <input
@@ -56,7 +94,11 @@ const AddPost = () => {
                 name="category"
                 placeholder="Categories"
                 className="input input-bordered w-full"
+                {...register("core_categories", { required: true })}
               />
+              {errors.core_categories && (
+                <span className="text-red-600">Category is required</span>
+              )}
             </div>
             <div>
               <input
@@ -65,17 +107,25 @@ const AddPost = () => {
                 placeholder={`${time.toLocaleDateString()} ${time.toLocaleTimeString()}`}
                 className="input input-bordered w-full"
                 disabled
+                {...register("created_at", { required: false })}
               />
             </div>
             <div className="col-span-2 w-full">
-            <textarea className="textarea textarea-bordered textarea-sm w-full max-w-6xl" placeholder="Content"></textarea>
+              <textarea
+                {...register("content", { required: true })}
+                className="textarea textarea-bordered textarea-sm w-full max-w-6xl"
+                placeholder="Content"
+              ></textarea>
+              {errors.content && (
+                <span className="text-red-600">Content is required</span>
+              )}
             </div>
           </div>
           <div className="modal-action justify-center">
             <button className="btn btn-primary px-12">Add New Post</button>
           </div>
         </form>
-      </form>
+      </div>
     </dialog>
   );
 };

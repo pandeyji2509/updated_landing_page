@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCheckCircle, FaRegCheckCircle } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 
 const ManageRole = () => {
   const [superAdmin, setSuperAdmin] = useState(true);
@@ -66,7 +66,7 @@ const ManageRole = () => {
                   <th>Write</th>
                 </tr>
               </thead>
-              <tbody className="text-primary">
+              {superAdmin && <tbody className="text-primary">
                 {/* row 1 */}
                 <tr>
                   <th>Dashboard</th>
@@ -193,7 +193,263 @@ const ManageRole = () => {
                     <FaCheckCircle></FaCheckCircle>
                   </td>
                 </tr>
-              </tbody>
+              </tbody>}
+              {financeManager && <tbody className="text-primary">
+                {/* row 1 */}
+                <tr>
+                  <th>Dashboard</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                </tr>
+                {/* row 2 */}
+                <tr>
+                  <th>Applications</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                {/* row 3 */}
+                <tr>
+                  <th>Finance</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Bookings</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>E-Wallet</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>User Management</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Reports</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Drivers</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Customers</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tickets</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+              </tbody>}
+              {applicationManager && <tbody className="text-primary">
+                {/* row 1 */}
+                <tr>
+                  <th>Dashboard</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                    {/* <FaRegCheckCircle></FaRegCheckCircle> */}
+                  </td>
+                </tr>
+                {/* row 2 */}
+                <tr>
+                  <th>Applications</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                {/* row 3 */}
+                <tr>
+                  <th>Finance</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Bookings</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>E-Wallet</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>User Management</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Reports</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Drivers</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Customers</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Tickets</th>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                  <td>
+                    <FaCheckCircle></FaCheckCircle>
+                  </td>
+                </tr>
+              </tbody>}
             </table>
           </div>
         </div>
