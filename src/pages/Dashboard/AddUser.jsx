@@ -1,15 +1,54 @@
+
+
 const AddUser = () => {
+  const handleCreateUser = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const contact_number = form.number.value;
+    const identity_proof = form.identity.value;
+    const address = form.address.value;
+    const zip = form.zip.value;
+    const password = form.password.value;
+    const confirmpass = form.confirmpass.value;
+    const user = {
+      name,
+      email,
+      contact_number,
+      identity_proof,
+      address,
+      zip,
+      password,
+    };
+    if (password === confirmpass) {
+      fetch(`http://localhost:8000/users`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  };
+
   return (
     <dialog id="my_modal_3" className="modal">
-      <form method="dialog" className="modal-box w-11/12 max-w-5xl">
-        <button className="btn btn-sm btn-circle btn-ghost text-2xl absolute right-2 top-2">
-          ✕
-        </button>
+      <div method="dialog" className="modal-box w-11/12 max-w-5xl">
+        <form>
+          <button className="btn btn-sm btn-circle btn-ghost text-2xl absolute right-2 top-2">
+            ✕
+          </button>
+        </form>
         <h1 className="text-2xl font-bold text-center mt-2 ">
           Let&apos;s set up your user profile with some basic information
         </h1>
-        <form className="w-full">
-          <div className="grid grid-cols-2 gap-5 mt-8 mb-3">
+        <form onSubmit={handleCreateUser} className="w-full">
+          <div className="grid grid-cols-2 gap-5 mt-12 mb-3">
             <div>
               <input
                 type="text"
@@ -18,7 +57,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="email"
                 name="email"
@@ -26,7 +65,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="text"
                 name="number"
@@ -34,7 +73,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="text"
                 name="identity"
@@ -42,7 +81,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="text"
                 name="address"
@@ -50,7 +89,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="text"
                 name="zip"
@@ -58,7 +97,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="password"
                 name="password"
@@ -66,7 +105,7 @@ const AddUser = () => {
                 className="input input-bordered w-full"
               />
             </div>
-            <div>
+            <div className="form-control">
               <input
                 type="password"
                 name="confirmpass"
@@ -75,11 +114,15 @@ const AddUser = () => {
               />
             </div>
           </div>
-          <div className="modal-action justify-center">
-            <button className="btn btn-primary px-12">Add User</button>
+          <div className="flex justify-center mt-7">
+            <input
+              className="btn btn-primary px-12"
+              type="submit"
+              value="Add User"
+            />
           </div>
         </form>
-      </form>
+      </div>
     </dialog>
   );
 };
