@@ -19,7 +19,7 @@ const ManageUser = () => {
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Roles</th>
+              <th>Role</th>
               <th>Email</th>
               <th>Contact</th>
               <th>Last Login</th>
@@ -78,7 +78,7 @@ const ManageUser = () => {
               <td>
                 <div className="font-bold">Hart Hagerty</div>
               </td>
-              <th>Application Manager</th>
+              <th>Admin</th>
               <th>employee@pendler.com</th>
               <th>0123456789</th>
               <th className="text-primary">Today(22:45)</th>

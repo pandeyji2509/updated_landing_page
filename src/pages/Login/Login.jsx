@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data)
-    fetch(`http://localhost:8000/users`, {
+    fetch(`http://localhost:8000/login_submit`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,10 +27,10 @@ const Login = () => {
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        navigate("/")
       })
       .catch(error => {
         console.log(error)
-        navigate("/")
       })
   };
 

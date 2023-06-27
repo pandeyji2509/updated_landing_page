@@ -9,6 +9,7 @@ const ManagePost = () => {
   // const handleSeeLess = () => {
   //     setText("Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquid molestiae molestias in sequi quas")
   // }
+  
   useEffect(() => {
     fetch("http://localhost:8000/news_list")
       .then((res) => res.json())
@@ -50,7 +51,7 @@ const ManagePost = () => {
           <div className="card-body">
             <h2 className="text-xl font-bold">Title Here</h2>
             <p className="text-base font-medium">Author Name</p>
-            <p>{}</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore officia, facere hic laudantium tempora architecto?</p>
             <div className="card-actions justify-end">
               <button className="btn btn-ghost btn-xs">Edit post</button>
               <button className="btn btn-ghost btn-xs">Show Post</button>
