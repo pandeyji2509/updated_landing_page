@@ -14,12 +14,18 @@ const AddPost = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    fetch(`http://localhost:8000/news_list`, {
+    const postDetails = {
+      title: data.title,
+      cover_image: data.img,
+      author: data.author,
+      content: data.content
+    }
+    fetch(`http://tv369.in:8000/api/v1/news/add/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(postDetails),
     })
       .then((res) => res.json())
       .then((data) => {

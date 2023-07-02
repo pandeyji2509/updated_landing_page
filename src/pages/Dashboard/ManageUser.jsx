@@ -5,9 +5,9 @@ const ManageUser = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/users")
+    fetch("http://tv369.in:8000/api/v1/accounts/users/")
       .then((res) => res.json())
-      .then((data) => setUsers(data));
+      .then((data) => console.log(data.results));
   }, []);
 
   return (

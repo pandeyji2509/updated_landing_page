@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data)
-    fetch(`http://localhost:8000/login_submit`, {
+    fetch(`http://tv369.in:8000/api/v1/auth/login/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

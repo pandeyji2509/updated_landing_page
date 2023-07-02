@@ -2,19 +2,14 @@ import { useEffect, useState } from "react";
 
 const ManagePost = () => {
   const [newses, setNewses] = useState([]);
-
-  // const handleSeeMore = () => {
-  //     setText("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim repellendus officia laudantium, harum facere adipisci earum odio optio culpa, fuga eveniet. Dolores, numquam cupiditate odio asperiores ex corrupti. Facere autem inventore maiores expedita architecto ut dolore neque repudiandae quod laborum.")
-  // }
-  // const handleSeeLess = () => {
-  //     setText("Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore aliquid molestiae molestias in sequi quas")
-  // }
   
   useEffect(() => {
-    fetch("http://localhost:8000/news_list")
+    fetch("http://tv369.in:8000/api/v1/news/")
       .then((res) => res.json())
-      .then((data) => setNewses(data));
+      .then((data) => setNewses(data.results));
   }, []);
+
+  console.log(newses)
 
   return (
     <div className="my-5">
@@ -25,7 +20,7 @@ const ManagePost = () => {
             className="card card-compact w-64 bg-base-100 shadow-xl"
           >
             <figure>
-              <img className="w-64 h-40" src={news.img} alt="Shoes" />
+              <img className="w-64 h-40" src={news.cover_image} alt="Shoes" />
             </figure>
             <div className="card-body">
               <h2 className="text-xl font-bold">{news.title}</h2>
