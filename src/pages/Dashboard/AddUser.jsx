@@ -17,7 +17,7 @@ const AddUser = () => {
       contact_number,
       password,
     };
-    fetch(`http://localhost:8000/users`, {
+    fetch(`${import.meta.env.VITE_LOCAL_URL}}/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -4,7 +4,7 @@ const ManagePost = () => {
   const [newses, setNewses] = useState([]);
   
   useEffect(() => {
-    fetch("http://tv369.in:8000/api/v1/news/")
+    fetch(`${import.meta.env.VITE_LOCAL_URL}/api/v1/news/`)
       .then((res) => res.json())
       .then((data) => setNewses(data.results));
   }, []);

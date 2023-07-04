@@ -5,7 +5,7 @@ const ManageUser = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("http://tv369.in:8000/api/v1/accounts/users/")
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/accounts/users/`)
       .then((res) => res.json())
       .then((data) => console.log(data.results));
   }, []);

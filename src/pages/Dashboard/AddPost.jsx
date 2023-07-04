@@ -20,7 +20,8 @@ const AddPost = () => {
       author: data.author,
       content: data.content
     }
-    fetch(`http://tv369.in:8000/api/v1/news/add/`, {
+    console.log(import.meta.env.VITE_BASE_URL)
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/news/add/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
