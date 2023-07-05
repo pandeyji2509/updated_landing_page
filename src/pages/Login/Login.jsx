@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data)
-    fetch(`${import.meta.env.VITE_URL}/api/v1/auth/login/`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login/`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
